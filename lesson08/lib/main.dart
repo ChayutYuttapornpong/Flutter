@@ -1,14 +1,18 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:lesson08/service/database.dart';
+import 'package:lesson08/models/product_model.dart';
+import 'package:lesson08/widgets/product_lists.dart';
+import 'package:lesson08/widgets/product_popup.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
@@ -26,24 +30,29 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Database db = Database();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Get Data...'),
+        title: const Text('Product List'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.add),
+            onPressed: () {
+              showModalBottomSheet(
+                  isScrollControlled: true,
+                  context: context,
+                  builder: (context) {
+                    var product;
+                    return ProductPopup(product: product);
+                  });
+            },
+          )
+        ],
       ),
-      body: Center(
-        child: FutureBuilder<String?>(
-          future: db.getData(path: '/customers/Xpmm1eKwhawYrivfeRyQ'),
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              print(snapshot.data.toString());
-              return const Text('Data Ready');
-            }
-            return const CircularProgressIndicator();
-          },
-        ),
+      // ignore: avoid_unnecessary_containers
+      body: Container(
+        child: const Product_Lists(),
       ),
     );
   }

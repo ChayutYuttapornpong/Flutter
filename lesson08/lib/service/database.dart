@@ -1,18 +1,35 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
+
+import '../models/product_model.dart';
 
 class Database {
-  Future<String?> getData({
-    required String path,
-  }) async {
-    final reference = FirebaseFirestore.instance.doc(path);
+  static Database instance = Database._();
+  Database._();
+  Stream<List<ProductModel?>> getAllProductStream() {
+    final reference = FirebaseFirestore.instance.collection('products');
+    Query query = reference.orderBy('id', descending: true);
+    final snapshots = query.snapshots();
+    return snapshots.map((snapshot) {
+      return snapshot.docs.map((doc) {
+        return ProductModel.fromMap(doc.data() as Map<String, dynamic>);
+      }).toList();
+    });
+  }
+
+  Future<void> setProduct({required ProductModel product}) async {
+    final reference = FirebaseFirestore.instance.doc('products/${product.id}');
     try {
-      final docSnapshot = await reference.get();
-      if (docSnapshot.exists) {
-        return docSnapshot.data().toString();
-      }
-      return null;
-    } catch (e) {
+      await reference.set(product.toMap());
+    } catch (err) {
+      rethrow;
+    }
+  }
+
+  Future<void> deleteProduct({required ProductModel product}) async {
+    final reference = FirebaseFirestore.instance.doc('products/${product.id}');
+    try {
+      await reference.delete();
+    } catch (err) {
       rethrow;
     }
   }
