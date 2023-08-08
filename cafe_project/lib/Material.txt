@@ -1,0 +1,5 @@
+FontStyle = Itim
+fontWeight: FontWeight.w400
+colors = 1 #FF503C33
+         2 #FFFFFFFF
+         3 #FFFF803B

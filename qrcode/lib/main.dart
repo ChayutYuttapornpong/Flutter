@@ -68,8 +68,8 @@ class _MyHomePageState extends State<MyHomePage> {
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () async {
-                            if (await canLaunch(scanresult!)) {
-                              await launch(scanresult!);
+                            if (await canLaunchUrl(scanresult as Uri)) {
+                              await launchUrl(scanresult as Uri);
                             }
                           },
                           style: ElevatedButton.styleFrom(
