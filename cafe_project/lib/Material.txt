@@ -3,3 +3,8 @@ fontWeight: FontWeight.w400
 colors = 1 #FF503C33
          2 #FFFFFFFF
          3 #FFFF803B
+         
+const backgroundcolor = Color(0xFFF3F0E7); // สีส่วนพื้นหลัง
+const selectbar = Color(0xFFA89C6C); // สีส่วนเลือกประเภทสินค้า
+const cardcolor = Color(0xFFDADEDD); //
+const textcolors = Color(0xFF2D4358);

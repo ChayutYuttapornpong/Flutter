@@ -41,8 +41,10 @@ dependencies:
   get: any
   firebase_database: any
   material_symbols_icons: any
-  chips_choice: any
-
+  side_navigation: any
+  
+  
+  
 
 dev_dependencies:
   flutter_test:
