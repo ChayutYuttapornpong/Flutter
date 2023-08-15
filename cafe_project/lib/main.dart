@@ -1,3 +1,4 @@
+import 'package:cafe_project/screens/home.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -15,9 +16,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'POS Food',
+      title: 'Tammjai Cafe',
+      theme: _buildTheme(Brightness.dark),
       home: const MainPage(),
       debugShowCheckedModeBanner: false,
+    );
+  }
+
+  ThemeData _buildTheme(brightness) {
+    var baseTheme = ThemeData(brightness: brightness);
+
+    return baseTheme.copyWith(
+      textTheme: GoogleFonts.itimTextTheme(baseTheme.textTheme),
     );
   }
 }
@@ -35,7 +45,7 @@ class _MainPageState extends State<MainPage> {
   _pageView() {
     switch (pageActive) {
       case 'Home':
-        return MainPage();
+        return const Homepage();
       case 'Dashboard':
         return Container();
       case 'History':
@@ -44,9 +54,8 @@ class _MainPageState extends State<MainPage> {
         return Container();
       case 'Settings':
         return Container();
-
       default:
-        return MainPage();
+        return const Homepage();
     }
   }
 
@@ -60,25 +69,27 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: textcolors,
-      body: Column(
+      body: Row(
         children: [
           Container(
-            width: 90,
-            padding: const EdgeInsets.only(top: 24, right: 12, left: 12),
-            height: MediaQuery.of(context).size.height,
-            child: _sideMenu(),
+              width: 100,
+              padding: const EdgeInsets.only(top: 24, right: 12, left: 12),
+              height: MediaQuery.of(context).size.height,
+              child: _sideMenu()),
+          Expanded(
+            flex: 14,
+            child: Container(
+              margin: const EdgeInsets.only(top: 24),
+              child: _pageView(),
+            ),
           ),
           Expanded(
+            flex: 6,
             child: Container(
-              margin: const EdgeInsets.only(top: 24, right: 12),
-              padding: const EdgeInsets.only(top: 12, right: 12, left: 12),
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(12),
-                    topRight: Radius.circular(12)),
-                color: backgroundcolor,
+              margin: const EdgeInsets.only(top: 24),
+              child: Container(
+                color: Colors.white,
               ),
-              child: _pageView(),
             ),
           ),
         ],
@@ -90,7 +101,6 @@ class _MainPageState extends State<MainPage> {
     return Column(children: [
       const Padding(padding: EdgeInsets.only(top: 20)),
       _logo(),
-      const SizedBox(height: 10),
       Expanded(
         child: ListView(
           children: [
@@ -115,8 +125,9 @@ class _MainPageState extends State<MainPage> {
               icon: Icons.notifications,
             ),
             const SizedBox(
-              height: 150,
+              height: 30,
             ),
+            _itemMenu(menu: 'Logout', icon: Icons.logout_outlined)
           ],
         ),
       ),
@@ -157,11 +168,12 @@ class _MainPageState extends State<MainPage> {
                   Icon(
                     icon,
                     color: Colors.white,
+                    size: 35,
                   ),
                   const SizedBox(height: 5),
                   Text(
                     menu,
-                    style: const TextStyle(color: Colors.white, fontSize: 10),
+                    style: const TextStyle(color: Colors.white, fontSize: 12),
                   ),
                 ],
               ),
