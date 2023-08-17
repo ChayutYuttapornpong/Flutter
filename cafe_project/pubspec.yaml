@@ -74,6 +74,7 @@ flutter:
     - TaamJaiCafe/FruitjuicSoda/
     - TaamJaiCafe/Milk/
     - TaamJaiCafe/Tea/
+    - TaamJaiCafe/icons/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
@@ -89,7 +90,7 @@ flutter:
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
+  #       - asset: fonts/Schyler-Italic.ttf 
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:

@@ -77,7 +77,7 @@ class _MainPageState extends State<MainPage> {
               height: MediaQuery.of(context).size.height,
               child: _sideMenu()),
           Expanded(
-            flex: 14,
+            flex: 15,
             child: Container(
               margin: const EdgeInsets.only(top: 24),
               child: _pageView(),
