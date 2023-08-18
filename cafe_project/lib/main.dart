@@ -54,8 +54,6 @@ class _MainPageState extends State<MainPage> {
         return Container();
       case 'Settings':
         return Container();
-      default:
-        return const Homepage();
     }
   }
 
@@ -84,6 +82,7 @@ class _MainPageState extends State<MainPage> {
             ),
           ),
           Expanded(
+            //Order
             flex: 6,
             child: Container(
               margin: const EdgeInsets.only(top: 24),
