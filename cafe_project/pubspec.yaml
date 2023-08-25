@@ -42,7 +42,8 @@ dependencies:
   firebase_database: any
   material_symbols_icons: any
   side_navigation: any
-  
+  firebase_storage: any 
+  cloud_firestore: any
   
   
 

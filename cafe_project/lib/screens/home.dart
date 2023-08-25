@@ -15,7 +15,7 @@ class _HomepageState extends State<Homepage> {
   _orderView() {
     switch (pageorder) {
       case 'Coffee':
-        return coffee();
+        return const coffee();
       case 'Tea':
         return Container();
       case 'Soda':
@@ -36,7 +36,7 @@ class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: backgroundcolor,
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
@@ -71,7 +71,7 @@ class _HomepageState extends State<Homepage> {
                             width: 20,
                           ),
                           _itemTab(
-                              icon: 'TaamJaiCafe/icons/sparkling-water.png',
+                              icon: 'TaamJaiCafe/icons/water.png',
                               isActive: false,
                               title: 'Soda'),
                           const SizedBox(

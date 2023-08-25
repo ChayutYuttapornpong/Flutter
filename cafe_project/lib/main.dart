@@ -2,6 +2,8 @@ import 'package:cafe_project/screens/home.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'screens/orderdetail.dart';
+
 const backgroundcolor = Color(0xFFF3F0E7); // สีส่วนพื้นหลัง
 const selectbar = Color(0xFFA89C6C); // สีส่วนเลือกประเภทสินค้า
 const cardcolor = Color(0xFFDADEDD); //
@@ -85,11 +87,7 @@ class _MainPageState extends State<MainPage> {
             //Order
             flex: 6,
             child: Container(
-              margin: const EdgeInsets.only(top: 24),
-              child: Container(
-                color: Colors.white,
-              ),
-            ),
+                margin: const EdgeInsets.only(top: 24), child: orderdetail()),
           ),
         ],
       ),
